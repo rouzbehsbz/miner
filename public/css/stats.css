@@ -9,6 +9,11 @@ table th {
     padding:6px;
     background:#F0F0F0;
 }
+table th img{
+    width: 18%;
+    height: auto;
+    margin-top: 4px;
+}
 table td {
     border:1px none #C0C0C0;
     text-align:center;

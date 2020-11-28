@@ -1,0 +1,29 @@
+.info img{
+    width: 10%;
+    height: auto;
+    margin-left: 45%;
+    margin-top: 4%;
+}
+
+.info p{
+    text-align: center;
+}
+
+.trophy img{
+    width: 8%;
+    height: auto;
+    margin-left: 46%;
+    margin-top: 10%;
+}
+
+.trophy p{
+    text-align: center
+}
+
+.rank{
+    margin-top: 10%;
+}
+
+.rank p{
+    text-align: center
+}
