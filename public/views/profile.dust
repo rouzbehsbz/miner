@@ -1,0 +1,39 @@
+{>"layout"/}
+
+{<css}
+    <link rel="stylesheet" href="css/profile.css">
+{/css}
+
+{<js}
+
+{/js}
+
+{<announce}
+    <p>
+        کل بازیکنان : <span>23</span><br>
+        بازیکنان آنلاین : <span>12</span>
+    </p>
+{/announce}
+
+{<container}
+    <div class="info">
+        <img src="img/user.png">
+        <p>
+            Polybius
+        </p>
+    </div>
+    <div class="trophy">
+        <img src="img/trophy.png">
+        <p>
+            453
+        </p>
+    </div>
+    <div class="rank">
+        <p>
+            رتبه
+        </p>
+        <p>
+            3
+        </p>
+    </div>
+{/container}

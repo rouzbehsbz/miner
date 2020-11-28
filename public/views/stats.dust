@@ -1,0 +1,41 @@
+{>"layout"/}
+
+{<css}
+    <link rel="stylesheet" href="css/stats.css">
+{/css}
+
+{<js}
+
+{/js}
+
+{<announce}
+    <p>
+        کل بازیکنان : <span>23</span><br>
+        بازیکنان آنلاین : <span>12</span>
+    </p>
+{/announce}
+
+{<container}
+    <table>
+        <th>
+            <img src="img/trophy.png">
+        </th>
+        <th>نام کاربری</th>
+        <th>#</th>
+        </tr>
+            <td>723</td>
+            <td>polybius</td>
+            <td>1</td>
+        </tr>
+        </tr>
+            <td>456</td>
+            <td>Alpheus</td>
+            <td>2</td>
+        </tr>
+        </tr>
+            <td>346</td>
+            <td>bitch</td>
+            <td>3</td>
+        </tr>
+    </table>
+{/container}

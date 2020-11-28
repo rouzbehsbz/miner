@@ -1,0 +1,27 @@
+{
+  "name": "miner",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rouzbehsbz/Miner.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rouzbehsbz/Miner/issues"
+  },
+  "homepage": "https://github.com/rouzbehsbz/Miner#readme",
+  "dependencies": {
+    "adaro": "^1.0.4",
+    "common-dustjs-helpers": "^1.5.1",
+    "dustjs-linkedin": "^2.7.5",
+    "express": "^4.17.1",
+    "farmhash": "^3.1.1"
+  }
+}
