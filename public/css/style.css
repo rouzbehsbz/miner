@@ -70,13 +70,14 @@ body {
     background-color: #ffffff;
     box-shadow: 0px 0px 15px 1px rgba(0,0,0,0.16);
     border-radius: 10px;
-    white-space: pre;
+    overflow: auto;
 }
 
 .container form{
     margin: auto;
     direction: rtl;
     color: #555555;
+    white-space: pre-wrap;
 }
 
 .container form input[type=text], input[type=password]{
@@ -108,4 +109,22 @@ body {
 
 .container form input[type=submit]:hover{
     background-color: #399652;
+}
+
+.error{
+    width: 93%;
+    height: 50px;
+    background-color: rgb(255, 104, 104);
+    border-radius: 12px;
+    margin-top: 10px;
+    margin-left: 10px;
+    overflow: auto;
+}
+
+.error p{
+    color: #ffffff;
+    text-align: center;
+    margin-top: 15px;
+    direction: rtl;
+    font-size: 14px;
 }
