@@ -41,12 +41,12 @@ else{
     const app = express();
     const server = app.listen(0, config.address);
 
-    // app.use(body_parser.urlencoded({extended : false}));
-    // app.use(body_parser.json());
     app.engine('dust', adaro.dust(dustJsHelpers));
     app.set('view engine', 'dust');
     app.use(express.static(__dirname + '/public/assets'));
     app.set('views', __dirname + '/public/views');
+    app.use(bodyParser.urlencoded({extended : false}));
+    app.use(bodyParser.json());
 
     app.use('/', require('./routs/routs'));
 
