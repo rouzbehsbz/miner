@@ -32,8 +32,10 @@ router.post('/', async (req, res, next)=>{
         else{
 
             req.session.userInfo = result;
-            log(req.session.userInfo);
-            return res.redirect(url);
+            return res.json({
+                status : 'success',
+                url : url
+            });
 
         }
 

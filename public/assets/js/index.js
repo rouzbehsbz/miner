@@ -13,8 +13,17 @@ $('form').submit(function(event){
     },
     function(data, status){
 
+        if(data.status == 'success'){
+
+            redirect(data.url)
+
+        }
+        else{
+
         $('.msg').text(data);
         $('.error').css('display', 'block');
+
+        }
 
     });
 

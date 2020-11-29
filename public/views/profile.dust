@@ -19,13 +19,13 @@
     <div class="info">
         <img src="img/user.png">
         <p>
-            Polybius
+            {userInfo.username}
         </p>
     </div>
     <div class="trophy">
         <img src="img/trophy.png">
         <p>
-            453
+            {userInfo.trophy}
         </p>
     </div>
     <div class="rank">
@@ -33,7 +33,7 @@
             رتبه
         </p>
         <p>
-            3
+            {myRank}
         </p>
     </div>
 {/container}

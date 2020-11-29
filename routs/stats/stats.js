@@ -4,7 +4,11 @@ router.get('/', async(req, res, next)=>{
 
     try{
 
-        res.render('stats');
+        let data = {
+            stats : await userModel.getStats()
+        };
+
+        res.render('stats', data);
 
     }
     catch(error){

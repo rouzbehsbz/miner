@@ -29,6 +29,7 @@ router.use(async(req, res, next)=>{
         }
         else{
 
+            res.locals.userInfo = req.session.userInfo;
             next();
 
         }

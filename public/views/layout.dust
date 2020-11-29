@@ -13,9 +13,12 @@
 
     <div class="header">
         <img src="img/logo.png">
-        <a href="#">بازی</a>
-        <a href="#">پروفایل من</a>
-        <a href="#">آمار</a>
+        <a href="{url}">بازی</a>
+        <a href="{url}stats">آمار</a>
+        {@ne key="{userInfo}" value=""}
+            <a href="{url}profile">پروفایل من</a>
+            <a href="{url}logout">خروج</a>
+        {/ne}
     </div>
 
     <div class="announce">
@@ -27,6 +30,7 @@
     </div>
 
     <script src="js/jquery.js"></script>
+    <script src="js/layout.js"></script>
     {+js/}
 </body>
 </html>

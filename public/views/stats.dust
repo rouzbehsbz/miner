@@ -22,20 +22,18 @@
         </th>
         <th>نام کاربری</th>
         <th>#</th>
-        </tr>
-            <td>9999</td>
-            <td>aaaaaaaaaaaaaaaaaaa</td>
-            <td>456</td>
-        </tr>
-        </tr>
-            <td>456</td>
-            <td>Alpheus</td>
-            <td>2</td>
-        </tr>
-        </tr>
-            <td>346</td>
-            <td>bitch</td>
-            <td>3</td>
-        </tr>
+        {#stats}
+            </tr>
+                <td>
+                    {trophy}
+                </td>
+                <td>
+                    {username}
+                </td>
+                <td>
+                    {@math key="{$idx}" method="add" operand="1"/}
+                </td>
+            </tr>
+        {/stats}
     </table>
 {/container}

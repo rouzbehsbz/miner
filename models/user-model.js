@@ -53,6 +53,21 @@ schema.statics = {
 
     },
 
+    getUserRank : async(data)=>{
+
+        let findUser = await userModel.findOne(data)
+        let aboveList = await userModel.find({_id: {$ne: findUser._id}, trophy: {$gte: findUser.trophy}}).sort({trophy : 1, username:1});
+
+        return aboveList.length + 1;
+
+    },
+
+    getStats : async()=>{
+
+        return await userModel.find().sort({trophy : -1, username:1}).limit(100);
+
+    }
+
 };
 
 module.exports = userModel = mongoose.model('user', schema);

@@ -1,10 +1,16 @@
+const userModel = require("../../models/user-model");
+
 const router = express.Router();
 
 router.get('/', async(req, res, next)=>{
 
     try{
 
-        res.render('profile');
+        let data = {
+            myRank : await userModel.getUserRank({username : req.session.userInfo.username})
+        };
+
+        res.render('profile', data);
 
     }
     catch(error){

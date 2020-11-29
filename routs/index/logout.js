@@ -4,7 +4,8 @@ router.get('/', async(req, res, next)=>{
 
     try{
 
-        res.render('index');
+        req.session.destroy();
+        res.redirect(url)
 
     }
     catch(error){

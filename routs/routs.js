@@ -7,6 +7,7 @@ router.use('/profile', require('./profile/profile'));
 router.use('/stats', require('./stats/stats'));
 
 router.use('/auth', require('./index/auth'));
+router.use('/logout', require('./index/logout'));
 
 
 router.use(async (req, res, next)=>{
