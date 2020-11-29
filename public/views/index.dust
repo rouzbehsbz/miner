@@ -5,7 +5,7 @@
 {/css}
 
 {<js}
-
+    <script src="js/index.js"></script>
 {/js}
 
 {<announce}
@@ -17,15 +17,15 @@
 
 {<container}
     <div class="error">
-        <p>
-            نام کاربری نباید بیشتر از 4 حرف باشد.
+        <p class="msg">
+            نام کاربری باید بین 4 تا 15 حرف و نمی تواند شامل حروف فارسی و غیر مجاز باشد.
         </p>
     </div>
-    <form action="" autocomplete="off">
-        <label for="username">نام کاربری</label>
-        <input type="text" id="username" name="username_inp">
-        <label for="password">رمز عبور</label>
-        <input type="password" id="password" name="password_inp">
+    <form action="{url}auth" method="POST" autocomplete="off">
+        <label for="username">نام کاربری</label><br>
+        <input type="text" id="username" name="username_inp"><br>
+        <label for="password">رمز عبور</label><br>
+        <input type="password" id="password" name="password_inp"><br>
         <input type="submit" value="ورود / عضویت">
     </form>
 {/container}

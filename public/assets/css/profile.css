@@ -1,3 +1,15 @@
+.announce p{
+    float: right;
+    text-align: right;
+    margin: 10px;
+    font-size: 15px;
+    color: #555555;
+}
+
+.announce p span{
+    color: #006DFF;
+}
+
 .info img{
     width: 10%;
     height: auto;

@@ -1,0 +1,20 @@
+{>"layout"/}
+
+{<css}
+    <link rel="stylesheet" href="css/game.css">
+{/css}
+
+{<js}
+
+{/js}
+
+{<announce}
+    <p>
+        کل بازیکنان : <span>23</span><br>
+        بازیکنان آنلاین : <span>12</span>
+    </p>
+{/announce}
+
+{<container}
+    
+{/container}

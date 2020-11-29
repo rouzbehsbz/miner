@@ -11,10 +11,10 @@
 }
 
 .container form{
-    margin: auto;
+    margin-right: 55px;
+    margin-top: 29px;
     direction: rtl;
     color: #555555;
-    white-space: pre-wrap;
 }
 
 .container form input[type=text], input[type=password]{
@@ -49,8 +49,9 @@
 }
 
 .error{
+    display: none;
     width: 93%;
-    height: 50px;
+    height: 69px;
     background-color: rgb(255, 104, 104);
     border-radius: 12px;
     margin-top: 10px;

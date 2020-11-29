@@ -40,7 +40,14 @@ else{
 
     const app = express();
     const server = app.listen(0, config.address);
-
+    let redisClient = redis.createClient();
+ 
+    app.use(expressSession({
+        store: new redisStore({ client: redisClient }),
+        secret: 'polybius@Miner',
+        resave: false,
+        saveUninitialized: true,
+    }));
     app.engine('dust', adaro.dust(dustJsHelpers));
     app.set('view engine', 'dust');
     app.use(express.static(__dirname + '/public/assets'));
@@ -49,6 +56,15 @@ else{
     app.use(bodyParser.json());
 
     app.use('/', require('./routs/routs'));
+
+    app.locals.url = url;
+
+    mongoose.connect('mongodb://localhost:27017/miner', {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useFindAndModify : false,
+        useCreateIndex : true
+    });    
 
     process.on('message', (msg, connection)=>{
 
