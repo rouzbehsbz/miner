@@ -1,13 +1,9 @@
 .announce p{
-    float: right;
-    text-align: right;
-    margin: 10px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 70px;
     font-size: 15px;
     color: #555555;
-}
-
-.announce p span{
-    color: #006DFF;
 }
 
 .container form{

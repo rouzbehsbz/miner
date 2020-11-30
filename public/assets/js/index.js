@@ -20,8 +20,8 @@ $('form').submit(function(event){
         }
         else{
 
-        $('.msg').text(data);
-        $('.error').css('display', 'block');
+            $('.msg').text(data);
+            $('.error').css('display', 'block');
 
         }
 

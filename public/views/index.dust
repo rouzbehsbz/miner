@@ -10,26 +10,21 @@
 
 {<announce}
     <p>
-        کل بازیکنان : <span>23</span><br>
-        بازیکنان آنلاین : <span>12</span>
+        حساب کاربری جدید بسازید یا وارد شوید
     </p>
 {/announce}
 
 {<container}
-    {@eq key="{userInfo}" value=""}
-        <div class="error">
-            <p class="msg">
-                نام کاربری باید بین 4 تا 15 حرف و نمی تواند شامل حروف فارسی و غیر مجاز باشد.
-            </p>
-        </div>
-        <form action="{url}auth" method="POST" autocomplete="off">
-            <label for="username">نام کاربری</label><br>
-            <input type="text" id="username" name="username_inp"><br>
-            <label for="password">رمز عبور</label><br>
-            <input type="password" id="password" name="password_inp"><br>
-            <input type="submit" value="ورود / عضویت">
-        </form>
-    {:else}
-        Lets Play
-    {/eq}
+    <div class="error">
+        <p class="msg">
+            error
+        </p>
+    </div>
+    <form action="{url}auth" method="POST" autocomplete="off">
+        <label for="username">نام کاربری</label><br>
+        <input type="text" id="username" name="username_inp"><br>
+        <label for="password">رمز عبور</label><br>
+        <input type="password" id="password" name="password_inp"><br>
+        <input type="submit" value="ورود / عضویت">
+    </form>
 {/container}

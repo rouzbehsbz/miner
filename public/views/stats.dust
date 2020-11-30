@@ -10,8 +10,7 @@
 
 {<announce}
     <p>
-        کل بازیکنان : <span>23</span><br>
-        بازیکنان آنلاین : <span>12</span>
+        بازیکنان ثبت نام شده : <span class="total">{totalPopulation}</span><br>
     </p>
 {/announce}
 

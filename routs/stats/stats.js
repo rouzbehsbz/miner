@@ -4,8 +4,11 @@ router.get('/', async(req, res, next)=>{
 
     try{
 
+        let playersList = await userModel.getStats();
+
         let data = {
-            stats : await userModel.getStats()
+            stats : playersList,
+            totalPopulation : playersList.length
         };
 
         res.render('stats', data);

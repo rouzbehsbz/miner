@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/layout.css">
     {+css/}
+    <script>
+        const url = '{url}';
+    </script>
     <title>معدنچی</title>
 
 </head>
@@ -13,11 +16,15 @@
 
     <div class="header">
         <img src="img/logo.png">
-        <a href="{url}">بازی</a>
+        {@ne key="{userInfo}" value=""}
+            <a href="{url}game">بازی</a>
+        {:else}
+            <a href="{url}">بازی</a>
+        {/ne}
         <a href="{url}stats">آمار</a>
         {@ne key="{userInfo}" value=""}
             <a href="{url}profile">پروفایل من</a>
-            <a href="{url}logout">خروج</a>
+            <a class="logout" href="{url}logout">خروج</a>
         {/ne}
     </div>
 

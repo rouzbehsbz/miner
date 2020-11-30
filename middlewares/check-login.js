@@ -17,7 +17,7 @@ router.use(async(req, res, next)=>{
 
             if(notAllowedUrls.includes(parsed_url)){
 
-                return res.redirect(url);
+                return res.redirect(`${url}`);
 
             }
             else{

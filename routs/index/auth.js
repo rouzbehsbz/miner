@@ -34,7 +34,7 @@ router.post('/', async (req, res, next)=>{
             req.session.userInfo = result;
             return res.json({
                 status : 'success',
-                url : url
+                url : `${url}game`
             });
 
         }

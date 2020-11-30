@@ -56,9 +56,9 @@ schema.statics = {
     getUserRank : async(data)=>{
 
         let findUser = await userModel.findOne(data)
-        let aboveList = await userModel.find({_id: {$ne: findUser._id}, trophy: {$gte: findUser.trophy}}).sort({trophy : 1, username:1});
+        let aboveList = await userModel.find({_id: {$ne: findUser._id}, trophy: {$gte: findUser.trophy}}).sort({trophy : -1, username: 1});
 
-        return aboveList.length + 1;
+        return aboveList.length == 0 ? 1 : aboveList.length;
 
     },
 

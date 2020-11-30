@@ -4,7 +4,16 @@ router.get('/', async(req, res, next)=>{
 
     try{
 
-        res.render('index');
+        if(isUndefined(req.session.useInfo)){
+
+            res.render('index');
+
+        }
+        else{
+
+            res.render('game');
+
+        }
 
     }
     catch(error){

@@ -5,16 +5,26 @@
 {/css}
 
 {<js}
-
+    <script>
+        let username = '{userInfo.username}';
+        let trophy = '{userInfo.trophy}';
+    </script>
+    <script src="socket.io/socket.io.js"></script>
+    <script src="js/game.js"></script>
 {/js}
 
 {<announce}
-    <p>
-        کل بازیکنان : <span>23</span><br>
-        بازیکنان آنلاین : <span>12</span>
-    </p>
+    <!-- <p class="info">
+        برای شروع بازی یک حریف پیدا کنید
+    </p> -->
+    <div class="names">
+        Polybius vs Alpheus
+    </div>
 {/announce}
 
 {<container}
-    
+    <div class="find">
+        <img class="loading" src="img/loading.png">
+        <input class="join" type="button" value="پیدا کردن حریف">
+    </div>
 {/container}
