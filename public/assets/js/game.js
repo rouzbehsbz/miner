@@ -27,9 +27,19 @@ socket.on('leaveQueue', ()=>{
 
 });
 
-socket.on('startGame', ()=>{
+socket.on('startGame', (data)=>{
+
+    $('.username1').text(data['1'].username);
+    $('.trophy1').text(' ' + data['1'].trophy);
+    $('.username2').text(data['2'].username);
+    $('.trophy2').text(' ' + data['2'].trophy);
+
+    drawBoard(data['initGame'])
 
     $('.find').css('display', 'none');
+    $('.board').css('display', 'block');
+    $('.alert').css('display', 'none');
+    $('.info').css('display', 'block');
 
 });
 
@@ -51,3 +61,26 @@ $('.join').on('click', (e)=>{
     }
 
 });
+
+function drawBoard(data){
+
+    let cellCounter = 0;
+    let rowSize = data.row;
+    let colSize = data.col;
+    let boardData = data.boardData;
+
+    for (let row = 1; row <= rowSize; row++) {
+
+        $('.board').append(`<tr class="row${row}"></tr>`);
+        
+        for (let col = 1; col <= colSize; col++) {
+
+            cellCounter += 1;
+            let insideData = typeof boardData[cellCounter] == 'undefined' ? '' : boardData[cellCounter];
+            $(`.row${row}`).append(`<td class="cell col${col}" name="${cellCounter}">${insideData}</td>`)
+
+        }
+
+    }
+
+}

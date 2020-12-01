@@ -43,3 +43,53 @@ to{ transform: rotate(360deg); }
     margin-top: 4%;
     animation: rotate 5s linear infinite; 
 }
+
+.info{
+    display: none;
+}
+
+.player1{
+    float: left;
+    text-align: left;
+    margin: 10px;
+}
+
+.player2{
+    direction: rtl;
+    float: right;
+    text-align: right;
+    margin: 10px
+}
+
+.trophy{
+    width: auto;
+    height: 17px;
+}
+
+.scores{
+    font-size: 25px;
+    text-align: center;
+}
+
+.red{
+    color: rgb(255, 72, 72);
+}
+
+.blue{
+    color: rgb(67, 67, 255)
+}
+
+.board{
+    display: none;
+}
+
+table{
+    margin-top: 13px;
+    margin-left: 19px;
+}
+
+.cell{
+    width: 38px;
+    height: 38px;
+    background-color: rgb(197, 197, 197);
+}

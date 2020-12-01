@@ -23,11 +23,27 @@ function socketHandler(server){
 
                 socket.roomId = roomId;
                 Osocket.roomId = roomId;
+                socket.turn = 1;
+                Osocket.turn = 2;
 
                 socket.join(roomId);
                 Osocket.join(roomId);
 
-                io.in(roomId).emit('startGame');
+                io.in(roomId).emit('startGame', {
+                    '1' : {
+                        username : socket.username,
+                        trophy : socket.trophy
+                    },
+                    '2' : {
+                        username : Osocket.username,
+                        trophy : Osocket.trophy
+                    },
+                    'initGame' : {
+                        col : 7,
+                        row : 8,
+                        boardData : []
+                    }
+                });
 
                 delete queueList[socket.id];
                 delete queueList[Osocket.id];
@@ -54,6 +70,10 @@ function socketHandler(server){
             socket.to(socket.roomId).emit('oppLeft');
             delete queueList[socket.id];
 
+        });
+
+        socket.on('reconnect', ()=>{
+            console.log('reconnect fired!');
         });
 
     });

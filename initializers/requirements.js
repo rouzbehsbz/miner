@@ -16,6 +16,7 @@ dustJsHelpers = require('./dustjs-helpers');
 userModel = require('../models/user-model.js');
 expressHandler = require('../express-handler');
 socketHandler = require('../socket-handler');
+GameController = require('../logic/game-controller');
 require('./lib');
 
 url = `http://${config.address}:${config.port}/`;
