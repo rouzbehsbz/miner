@@ -34,7 +34,8 @@ socket.on('startGame', (data)=>{
     $('.username2').text(data['2'].username);
     $('.trophy2').text(' ' + data['2'].trophy);
 
-    drawBoard(data['initGame'])
+    $('table').remove();
+    drawBoard(data['initGame']);
 
     $('.find').css('display', 'none');
     $('.board').css('display', 'block');
@@ -42,6 +43,13 @@ socket.on('startGame', (data)=>{
     $('.info').css('display', 'block');
 
 });
+
+socket.on('selectCell', (data)=>{
+    
+    $('table').remove();
+    drawBoard(data);
+    
+})
 
 socket.on('oppLeft', ()=>{
 
@@ -62,22 +70,52 @@ $('.join').on('click', (e)=>{
 
 });
 
+$(document).on('click', '.cell', (event)=>{
+
+    socket.emit('selectCell', {
+        row: parseInt($(event.target).attr('row')),
+        col: parseInt($(event.target).attr('col'))
+    });
+
+});
+
+
 function drawBoard(data){
 
-    let cellCounter = 0;
     let rowSize = data.row;
     let colSize = data.col;
     let boardData = data.boardData;
 
-    for (let row = 1; row <= rowSize; row++) {
+    $('.container').append(`<table class="board"></table>`);
+    $('.board').css('display', 'block');
 
+    for (let row = 1; row <= rowSize; row++) {
         $('.board').append(`<tr class="row${row}"></tr>`);
         
         for (let col = 1; col <= colSize; col++) {
 
-            cellCounter += 1;
-            let insideData = typeof boardData[cellCounter] == 'undefined' ? '' : boardData[cellCounter];
-            $(`.row${row}`).append(`<td class="cell col${col}" name="${cellCounter}">${insideData}</td>`)
+            if(typeof boardData[row][col] == 'number'){
+
+                $(`.row${row}`).append(`<td class="cell number col${col}" row="${row}" col="${col}">${boardData[row][col]}</td>`)
+
+            }
+            else if(boardData[row][col] == 'O1'){
+
+                $(`.row${row}`).append(`<td class="cell col${col}" row="${row}" col="${col}">
+                                        <img class="ore" src="img/ore1.png"></img></td>`)
+
+            }
+            else if(boardData[row][col] == 'O2'){
+
+                $(`.row${row}`).append(`<td class="cell col${col}" row="${row}" col="${col}">
+                                        <img class="ore" src="img/ore2.png"></img></td>`)
+
+            }
+            else{
+
+                $(`.row${row}`).append(`<td class="cell col${col}" row="${row}" col="${col}"></td>`)
+
+            }
 
         }
 

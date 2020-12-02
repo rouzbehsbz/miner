@@ -41,6 +41,4 @@
         <img class="loading" src="img/loading.png">
         <input class="join" type="button" value="پیدا کردن حریف">
     </div>
-    <table class="board">
-    </table>
 {/container}

@@ -89,7 +89,20 @@ table{
 }
 
 .cell{
+    font-size: 17px;
+    text-align: center;
     width: 38px;
     height: 38px;
     background-color: rgb(197, 197, 197);
+}
+
+.number{
+    color: #ffffff;
+    background-color: rgb(37, 37, 37);
+}
+
+.ore{
+    width: 20px;
+    height: auto;
+    margin-top: 5px;
 }

@@ -4,6 +4,7 @@ function socketHandler(server){
     io.adapter(ioRedis({host : 'localhost', port : 6379}));
 
     let queueList = [];
+    let rooms = [];
 
     io.on('connection', (socket)=>{
 
@@ -29,6 +30,8 @@ function socketHandler(server){
                 socket.join(roomId);
                 Osocket.join(roomId);
 
+                rooms[roomId] = new GameController();
+
                 io.in(roomId).emit('startGame', {
                     '1' : {
                         username : socket.username,
@@ -39,9 +42,9 @@ function socketHandler(server){
                         trophy : Osocket.trophy
                     },
                     'initGame' : {
-                        col : 7,
-                        row : 8,
-                        boardData : []
+                        col : rooms[roomId].setting.col,
+                        row : rooms[roomId].setting.row,
+                        boardData : rooms[roomId].boardData
                     }
                 });
 
@@ -56,6 +59,22 @@ function socketHandler(server){
 
             }
         
+        });
+
+        socket.on('selectCell',(data)=>{
+
+            let findRoom = rooms[socket.roomId];
+            
+            if(findRoom.gameTurn == socket.turn){
+
+                let newData = findRoom.selectCell(data.row, data.col, socket.turn);
+                io.in(socket.roomId).emit('selectCell', newData);
+
+            }
+            else{
+                return;
+            }
+
         });
 
         socket.on('leaveQueue', ()=>{

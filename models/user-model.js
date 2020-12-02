@@ -60,9 +60,7 @@ schema.statics = {
         let tempList = [];
 
         for(let doc of aboveList){
-
             tempList.push(doc.username);
-            
         }
 
         return tempList.indexOf(data.username) + 1;
