@@ -8,6 +8,11 @@
     font-family: 'vazir';
     src: url('../font/Vazir.ttf');
 }
+@font-face
+{
+    font-family: 'vazir bold';
+    src: url('../font/Vazir-Bold.ttf');
+}
 
 body {
     background-color: #F3F3F3;

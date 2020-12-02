@@ -24,7 +24,7 @@
     <div class="trophy">
         <img src="img/trophy.png">
         <p>
-            {userInfo.trophy}
+            {trophy}
         </p>
     </div>
     <div class="rank">

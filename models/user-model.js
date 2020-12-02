@@ -63,7 +63,10 @@ schema.statics = {
             tempList.push(doc.username);
         }
 
-        return tempList.indexOf(data.username) + 1;
+        return {
+            trophy : findUser.trophy,
+            rank : tempList.indexOf(data.username) + 1,
+        }
 
     },
 

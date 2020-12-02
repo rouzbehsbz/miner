@@ -33,6 +33,9 @@
             <span>-</span>
             <span class="score2 blue"> 0</span>
         </div>
+        <div class="turn">
+            نوبت <span class="who">فلانی</span> است.
+        </div>
     </div>
 {/announce}
 
@@ -40,5 +43,15 @@
     <div class="find">
         <img class="loading" src="img/loading.png">
         <input class="join" type="button" value="پیدا کردن حریف">
+    </div>
+    <div class="end">
+        <span class="winner">فلانی</span><br><br>
+        <span class="user1">Polybius</span><br>
+        <img class="trophy" src="img/trophy.png">
+        <span class="cal1"> +29</span><br><br>
+        <span class="user2">Alpheus</span><br>
+        <img class="trophy" src="img/trophy.png">
+        <span class="cal2"> -9</span><br><br>
+        <input class="replay" type="button" value="برگشت">
     </div>
 {/container}

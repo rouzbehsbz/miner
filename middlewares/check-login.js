@@ -29,6 +29,12 @@ router.use(async(req, res, next)=>{
         }
         else{
 
+            if('/'.includes(parsed_url)){
+
+                return res.redirect(`${url}game`);
+
+            }
+
             res.locals.userInfo = req.session.userInfo;
             next();
 

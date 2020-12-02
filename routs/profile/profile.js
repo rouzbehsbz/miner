@@ -6,9 +6,11 @@ router.get('/', async(req, res, next)=>{
 
     try{
 
+        let result = await userModel.getUserRank({username : req.session.userInfo.username})
         let data = {
-            myRank : await userModel.getUserRank({username : req.session.userInfo.username})
-        };
+            myRank : result.rank,
+            trophy : result.trophy
+        }
 
         res.render('profile', data);
 

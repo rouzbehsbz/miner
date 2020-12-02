@@ -33,6 +33,7 @@ socket.on('startGame', (data)=>{
     $('.trophy1').text(' ' + data['1'].trophy);
     $('.username2').text(data['2'].username);
     $('.trophy2').text(' ' + data['2'].trophy);
+    updateTurn(1);
 
     $('table').remove();
     drawBoard(data['initGame']);
@@ -45,9 +46,23 @@ socket.on('startGame', (data)=>{
 });
 
 socket.on('selectCell', (data)=>{
-    
+
     $('table').remove();
-    drawBoard(data);
+    updateScore(data.score1, data.score2);
+
+    if(data.status == 'gamePlay'){
+
+        updateTurn(data.turn);
+        drawBoard(data);
+
+    }
+    else if(data.status == 'end'){
+
+        $('.turn').css('display', 'none');
+        $('.end').css('display', 'block');
+        drawEnd(data);
+
+    }
     
 })
 
@@ -67,6 +82,12 @@ $('.join').on('click', (e)=>{
         socket.emit('leaveQueue');
         joinBtnToggle = true;
     }
+
+});
+
+$('.replay').on('click', (e)=>{
+
+    redirect(url);
 
 });
 
@@ -119,6 +140,39 @@ function drawBoard(data){
 
         }
 
+    }
+
+}
+
+function updateTurn(num){
+
+    num == 1 ? $('.who').text('قرمز') : $('.who').text('آبی');
+    num == 1 ? $('.who').css('color', 'rgb(255, 72, 72)') : $('.who').css('color', 'rgb(67, 67, 255)');
+
+}
+
+function updateScore(score1, score2){
+
+    $('.score1').text(`${score1} `);
+    $('.score2').text(` ${score2}`);
+
+}
+
+function drawEnd(data){
+
+    $('.winner').text(`* ${data.winnerUsername} *`);
+    $('.user1').text(data.winnerUsername);
+    $('.user2').text(data.looserUsername);
+    $('.cal1').text(` +${data.calWinnerTrophy}`);
+    $('.cal2').text(` ${data.calLooserTrophy}`);
+
+    if(data.winnerTurn == 1){
+        $('.user1').addClass('red');
+        $('.user2').addClass('blue');
+    }
+    else{
+        $('.user1').addClass('blue');
+        $('.user2').addClass('red');
     }
 
 }

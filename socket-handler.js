@@ -30,7 +30,7 @@ function socketHandler(server){
                 socket.join(roomId);
                 Osocket.join(roomId);
 
-                rooms[roomId] = new GameController();
+                rooms[roomId] = new GameController(roomId, socket.username, Osocket.username, socket.trophy, Osocket.trophy);
 
                 io.in(roomId).emit('startGame', {
                     '1' : {
@@ -61,14 +61,19 @@ function socketHandler(server){
         
         });
 
-        socket.on('selectCell',(data)=>{
+        socket.on('selectCell', async(data)=>{
 
             let findRoom = rooms[socket.roomId];
             
             if(findRoom.gameTurn == socket.turn){
 
-                let newData = findRoom.selectCell(data.row, data.col, socket.turn);
-                io.in(socket.roomId).emit('selectCell', newData);
+                let newData = await findRoom.selectCell(data.row, data.col, socket.turn);
+                log(newData);
+                if(newData){
+
+                    io.in(socket.roomId).emit('selectCell', newData);
+
+                }
 
             }
             else{
