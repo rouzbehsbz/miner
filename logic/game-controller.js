@@ -1,3 +1,5 @@
+const userModel = require("../models/user-model");
+
 class GameController{
 
     constructor(roomId, username1, username2, trophy1, trophy2){
@@ -17,7 +19,7 @@ class GameController{
             row : 8,
             col : 7,
             ore : 15,
-            oreToWin : 8
+            oreToWin : 1
         }
 
         this.initGame();
@@ -133,8 +135,8 @@ class GameController{
         let calWinnerTrophy = this.winnerTrophy(winnerTrophy, looserTrophy);
         let calLooserTrophy = this.looserTrophy(looserTrophy, winnerTrophy);
 
-        await userModel.findOneAndUpdate({username : winnerUsername}, {$inc : {trophy : calWinnerTrophy}});
-        await userModel.findOneAndUpdate({username : looserUsername}, {$inc : {trophy : calLooserTrophy}});
+        await userModel.updateTrophy(winnerUsername, calWinnerTrophy);
+        await userModel.updateTrophy(looserUsername, calLooserTrophy);
 
         return{
             status : 'end',

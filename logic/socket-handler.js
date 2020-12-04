@@ -3,7 +3,7 @@ function socketHandler(server){
     const io = socketIo(server);
     io.adapter(ioRedis({host : 'localhost', port : 6379}));
 
-    let queueList = [];
+    let queue = [];
     let rooms = [];
 
     io.on('connection', (socket)=>{
@@ -17,10 +17,10 @@ function socketHandler(server){
 
         socket.on('joinQueue', ()=>{
 
-            if(!isUndefined(queueList[Object.keys(queueList)[0]])){
+            if(!isUndefined(queue[Object.keys(queue)[0]])){
 
                 let roomId = uniqid.time();
-                let Osocket = queueList[Object.keys(queueList)[0]];
+                let Osocket = queue[Object.keys(queue)[0]];
 
                 socket.roomId = roomId;
                 Osocket.roomId = roomId;
@@ -48,13 +48,13 @@ function socketHandler(server){
                     }
                 });
 
-                delete queueList[socket.id];
-                delete queueList[Osocket.id];
+                delete queue[socket.id];
+                delete queue[Osocket.id];
 
             }
             else{
 
-                queueList[socket.id] = socket;
+                queue[socket.id] = socket;
                 socket.emit('joinQueue');
 
             }
@@ -68,10 +68,17 @@ function socketHandler(server){
             if(findRoom.gameTurn == socket.turn){
 
                 let newData = await findRoom.selectCell(data.row, data.col, socket.turn);
-                log(newData);
+
                 if(newData){
 
                     io.in(socket.roomId).emit('selectCell', newData);
+
+                    if(newData.status == 'end'){
+
+                        socket.leave(socket.roomId);
+                        delete rooms[socket.roomId];
+
+                    }
 
                 }
 
@@ -84,7 +91,7 @@ function socketHandler(server){
 
         socket.on('leaveQueue', ()=>{
             
-            delete queueList[socket.id];
+            delete queue[socket.id];
             socket.emit('leaveQueue');
 
         });
@@ -92,12 +99,8 @@ function socketHandler(server){
         socket.on('disconnect', ()=>{
 
             socket.to(socket.roomId).emit('oppLeft');
-            delete queueList[socket.id];
+            delete queue[socket.id];
 
-        });
-
-        socket.on('reconnect', ()=>{
-            console.log('reconnect fired!');
         });
 
     });

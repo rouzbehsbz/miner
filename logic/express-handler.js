@@ -17,12 +17,12 @@ function expressHandler(app){
     }));
     app.engine('dust', adaro.dust(dustJsHelpers));
     app.set('view engine', 'dust');
-    app.use(express.static(__dirname + '/public/assets'));
-    app.set('views', __dirname + '/public/views');
+    app.use(express.static(dirpath + 'public/assets'));
+    app.set('views', dirpath + 'public/views');
     app.use(bodyParser.urlencoded({extended : false}));
     app.use(bodyParser.json());
 
-    app.use('/', require('./routs/routs'));
+    app.use('/', require('../routs/routs'));
 
     app.locals.url = url;
 

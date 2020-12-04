@@ -22,6 +22,7 @@
             <a href="{url}">بازی</a>
         {/ne}
         <a href="{url}stats">آمار</a>
+        <a href="{url}guide">راهنما</a>
         {@ne key="{userInfo}" value=""}
             <a href="{url}profile">پروفایل من</a>
             <a class="logout" href="{url}logout">خروج</a>

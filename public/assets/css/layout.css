@@ -1,6 +1,7 @@
 * { 
     margin: 0;
     padding: 0;
+    -webkit-appearance: none;
 }
 
 @font-face
@@ -36,9 +37,9 @@ body {
     float: right;
     text-align: center;
     text-decoration: none;
-    padding: 12px 16px;
+    padding: 14px 12px;
     color: #555555;
-    font-size: 17px;
+    font-size: 14px;
 }
 
 .header a:hover{

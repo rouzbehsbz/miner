@@ -29,13 +29,15 @@ socket.on('leaveQueue', ()=>{
 
 socket.on('startGame', (data)=>{
 
+    $('.error').css('display', 'none');
+    $('table').remove();
+
     $('.username1').text(data['1'].username);
     $('.trophy1').text(' ' + data['1'].trophy);
     $('.username2').text(data['2'].username);
     $('.trophy2').text(' ' + data['2'].trophy);
     updateTurn(1);
 
-    $('table').remove();
     drawBoard(data['initGame']);
 
     $('.find').css('display', 'none');
@@ -68,7 +70,8 @@ socket.on('selectCell', (data)=>{
 
 socket.on('oppLeft', ()=>{
 
-    redirect(`${url}game`)
+    sessionStorage.setItem('oppLeft', 'true');
+    redirect(`${url}game`);
 
 });
 
@@ -99,6 +102,14 @@ $(document).on('click', '.cell', (event)=>{
     });
 
 });
+
+if(sessionStorage.getItem('oppLeft') == 'true'){
+
+    $('.msg').text('حریف شما بازی را ترک کرد');
+    $('.error').css('display', 'block');
+    sessionStorage.setItem('oppLeft', 'false');
+
+}
 
 
 function drawBoard(data){
@@ -160,7 +171,7 @@ function updateScore(score1, score2){
 
 function drawEnd(data){
 
-    $('.winner').text(`* ${data.winnerUsername} *`);
+    $('.winner').text(`${data.winnerUsername} : برنده`);
     $('.user1').text(data.winnerUsername);
     $('.user2').text(data.looserUsername);
     $('.cal1').text(` +${data.calWinnerTrophy}`);

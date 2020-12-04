@@ -3,13 +3,14 @@ let schema = new mongoose.Schema({
         type : String,
         unique : true,
         set : function(username){
-            return username.toLocaleLowerCase()
+            return username.toLocaleLowerCase();
         }
     },
     password : String,
     trophy : {
         type : Number,
         default : 0,
+        min : 0,
     },
 });
 
@@ -73,6 +74,21 @@ schema.statics = {
     getStats : async()=>{
 
         return await userModel.find().sort({trophy : -1, username:1}).limit(100);
+
+    },
+
+    updateTrophy : async(username, calTrophy)=>{
+
+        let findUser = await userModel.findOne({username : username});
+        let tempTrophy = calTrophy;
+
+        if(calTrophy < 0){
+
+            findUser.trophy + calTrophy < 0 ? tempTrophy = (-1)*findUser.trophy : tempTrophy = calTrophy;
+
+        }
+
+        return await userModel.findOneAndUpdate({username : username}, {$inc : {trophy : tempTrophy}});
 
     }
 

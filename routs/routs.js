@@ -5,6 +5,7 @@ router.use(require('../middlewares/check-login'));
 router.use('/', require('./index/index'));
 router.use('/profile', require('./profile/profile'));
 router.use('/stats', require('./stats/stats'));
+router.use('/guide', require('./guide/guide'));
 router.use('/game', require('./game/game'));
 
 router.use('/auth', require('./index/auth'));

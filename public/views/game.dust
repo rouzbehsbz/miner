@@ -40,6 +40,11 @@
 {/announce}
 
 {<container}
+    <div class="error">
+        <p class="msg">
+            error
+        </p>
+    </div>
     <div class="find">
         <img class="loading" src="img/loading.png">
         <input class="join" type="button" value="پیدا کردن حریف">

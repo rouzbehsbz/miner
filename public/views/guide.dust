@@ -1,0 +1,21 @@
+{>"layout"/}
+
+{<css}
+    <link rel="stylesheet" href="css/guide.css">
+{/css}
+
+{<js}
+
+{/js}
+
+{<announce}
+    <p>
+        آموزش نحوه بازی معدنچی
+    </p>
+{/announce}
+
+{<container}
+    <ul>
+        <li></li>
+    </ul>
+{/container}
