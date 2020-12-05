@@ -2,13 +2,13 @@ const userModel = require("../models/user-model");
 
 class GameController{
 
-    constructor(roomId, username1, username2, trophy1, trophy2){
+    constructor(roomId, socket, Osocket){
 
         this.roomId = roomId
-        this.username1 = username1;
-        this.username2 = username2;
-        this.trophy1 = trophy1;
-        this.trophy2 = trophy2;
+        this.username1 = socket.username;
+        this.username2 = Osocket.username;
+        this.trophy1 = socket.trophy;
+        this.trophy2 = Osocket.trophy;
         this.boardData = [];
         this.gameTurn = 1;
         this.score1 = 0;

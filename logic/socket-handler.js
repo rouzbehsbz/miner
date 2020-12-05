@@ -33,7 +33,7 @@ function socketHandler(server){
                 socket.join(roomId);
                 Osocket.join(roomId);
 
-                rooms[roomId] = new GameController(roomId, socket.username, Osocket.username, socket.trophy, Osocket.trophy);
+                rooms[roomId] = new GameController(roomId, socket, Osocket);
 
                 io.in(roomId).emit('startGame', {
                     '1' : {
@@ -78,8 +78,11 @@ function socketHandler(server){
 
                     if(newData.status == 'end'){
 
-                        socket.leave(socket.roomId);
+                        findRoom.socket.leave(socket.roomId);
+                        findRoom.Osocket.leave(socket.roomId);
                         delete rooms[socket.roomId];
+                        findRoom.socket.roomId = null;
+                        findRoom.Osocket.roomId = null;
 
                     }
 
@@ -99,9 +102,16 @@ function socketHandler(server){
 
         });
 
-        socket.on('disconnect', ()=>{
+        socket.on('disconnect', async()=>{
 
             socket.to(socket.roomId).emit('oppLeft');
+
+            if(socket.roomId){
+
+                await userModel.findOneAndUpdate({username : socket.username}, {$inc : {trophy : -10}});
+
+            }
+
             delete queue[socket.id];
 
         });
