@@ -1,19 +1,22 @@
 function socketHandler(server){
     
     const io = socketIo(server);
-    io.adapter(ioRedis({host : 'localhost', port : 6379}));
+    io.adapter(ioRedis(config.redis_url));
+    io.use((socket, next)=>{
+        sessionMiddleware(socket.request, socket.request.res || {}, next);
+    });
 
     let queue = [];
     let rooms = [];
 
     io.on('connection', (socket)=>{
 
-        socket.on('init', (data)=>{
+        socket.on('init', ()=>{
 
-            socket.username = data.username;
-            socket.trophy = data.trophy;
+            socket.username = socket.request.session.userInfo.username;
+            socket.trophy = socket.request.session.userInfo.trophy;
 
-        });
+        })
 
         socket.on('joinQueue', ()=>{
 
@@ -63,7 +66,7 @@ function socketHandler(server){
 
         socket.on('selectCell', async(data)=>{
 
-            let findRoom = rooms[socket.roomId];
+            let findRoom = await rooms[socket.roomId];
             
             if(findRoom.gameTurn == socket.turn){
 

@@ -19,7 +19,7 @@ class GameController{
             row : 8,
             col : 7,
             ore : 15,
-            oreToWin : 1
+            oreToWin : 8
         }
 
         this.initGame();
@@ -76,7 +76,7 @@ class GameController{
 
     }
 
-    selectCell(rowNumber, colNumber, playerTurn){
+    async selectCell(rowNumber, colNumber, playerTurn){
 
         if(this.gameTurn == playerTurn){
 
@@ -95,7 +95,7 @@ class GameController{
     
                 if(this.score1 == this.setting.oreToWin || this.score2 == this.setting.oreToWin){
     
-                    return this.endGame();
+                    return await this.endGame();
     
                 }
                 else{

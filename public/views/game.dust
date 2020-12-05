@@ -5,10 +5,6 @@
 {/css}
 
 {<js}
-    <script>
-        let username = '{userInfo.username}';
-        let trophy = '{userInfo.trophy}';
-    </script>
     <script src="socket.io/socket.io.js"></script>
     <script src="js/game.js"></script>
 {/js}

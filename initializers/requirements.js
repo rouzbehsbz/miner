@@ -1,9 +1,10 @@
 express = require('express');
+helmet = require('helmet');
 adaro = require('adaro');
 bodyParser = require('body-parser');
 redis = require('redis');
-expressSession = require('express-session');
-redisStore = require('connect-redis')(expressSession);
+session = require('express-session');
+redisStore = require('connect-redis')(session);
 socketIo = require('socket.io');
 ioRedis = require('socket.io-redis');
 mongoose = require('mongoose');
@@ -20,3 +21,11 @@ require('./lib');
 url = `http://${config.address}:${config.port}/`;
 notAllowedUrls = ['profile', 'game'];
 dirpath = require.main.path + '/';
+
+redisClient = redis.createClient(config.redis_url);
+sessionMiddleware = session({
+    store: new redisStore({ client: redisClient }),
+    secret: 'polybius@Miner',
+    resave: false,
+    saveUninitialized: true,
+})

@@ -1,20 +1,17 @@
 function expressHandler(app){
 
-    const redisClient = redis.createClient();
+    const redisClient = redis.createClient(config.redis_url);
 
-    mongoose.connect('mongodb://localhost:27017/miner', {
+    mongoose.connect(config.mongodb_url, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useFindAndModify : false,
-        useCreateIndex : true
+        useCreateIndex : true,
+        authSource : 'admin'
     });
 
-    app.use(expressSession({
-        store: new redisStore({ client: redisClient }),
-        secret: 'polybius@Miner',
-        resave: false,
-        saveUninitialized: true,
-    }));
+    app.use(sessionMiddleware);
+    app.use(helmet());
     app.engine('dust', adaro.dust(dustJsHelpers));
     app.set('view engine', 'dust');
     app.use(express.static(dirpath + 'public/assets'));

@@ -1,4 +1,6 @@
 {
-    "address" : "192.168.1.4",
-    "port" : 80
+    "address" : "minerio.iran.liara.run",
+    "port" : 80,
+    "mongodb_url" : "mongodb://root:fPgiRF8zyJY76zWqOtX1Dq4T@minerio-mongodb:27017/minerio",
+    "redis_url" : "redis://:JdrxPCT7xe97aO06TDpfQP3h@minerio-redis:6379/0"
 }

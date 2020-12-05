@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/layout.css">
     {+css/}
     <script>
-        const url = '{url}';
+        //const url = '{url}';
     </script>
     <title>معدنچی</title>
 

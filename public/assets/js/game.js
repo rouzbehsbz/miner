@@ -1,14 +1,9 @@
+const url = `https://minerio.iran.liara.run/`;
 const socket = io(url);
-
 let joinBtnToggle = true;
 
 socket.on('connect', ()=>{
-
-    socket.emit('init', {
-        username,
-        trophy
-    })
-
+    socket.emit('init');
 });
 
 socket.on('joinQueue', ()=>{
