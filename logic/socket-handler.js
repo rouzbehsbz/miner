@@ -107,9 +107,12 @@ function socketHandler(server){
             socket.to(socket.roomId).emit('oppLeft');
 
             if(socket.roomId){
-
-                await userModel.findOneAndUpdate({username : socket.username}, {$inc : {trophy : -10}});
-
+                if(socket.trophy - 10 < 0){
+                    await userModel.findOneAndUpdate({username : socket.username}, {$inc : {trophy : 0}});
+                }
+                else{
+                    await userModel.findOneAndUpdate({username : socket.username}, {$inc : {trophy : -10}});
+                }
             }
 
             delete queue[socket.id];
